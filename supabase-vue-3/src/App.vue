@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import datapage from './views/datapage.vue'
 
 </script>
 

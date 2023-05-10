@@ -1,0 +1,22 @@
+<template>
+  <div class="about">
+    <h1>This is an about page</h1>
+  </div>
+</template>
+
+<style>
+
+</style>
+
+<script setup>
+import { supabase } from '../supabase'
+import { ref } from 'vue';
+import { onMounted } from 'vue';
+
+
+
+
+onMounted(() => {
+
+})
+</script>
