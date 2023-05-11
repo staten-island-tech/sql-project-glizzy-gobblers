@@ -1,22 +1,22 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+<h1>about</h1>
 </template>
 
-<style>
-
-</style>
 
 <script setup>
+import { ref, onMounted } from 'vue'
 import { supabase } from '../supabase'
-import { ref } from 'vue';
-import { onMounted } from 'vue';
 
+async function getdata(){
+  
 
-
+  const { data, error } = await supabase
+  .from('countries')
+  .select()
+console.log(data)
+}
 
 onMounted(() => {
-
+getdata()
 })
 </script>
