@@ -9,7 +9,7 @@ const handleLogin = async () => {
   try {
     loading.value = true
     const { error } = await supabase.auth.signInWithOtp({
-      email: email.value,
+      email: email.value
     })
     if (error) throw error
     alert('Check your email for the login link!')
@@ -23,22 +23,37 @@ const handleLogin = async () => {
 }
 </script>
 
-<template>
-  <form class="row flex-center flex" @submit.prevent="handleLogin">
-    <div class="col-6 form-widget">
-      <h1 class="header">Supabase + Vue 3</h1>
-      <p class="description">Sign in via magic link with your email below</p>
-      <div>
-        <input class="inputField" required type="email" placeholder="Your email" v-model="email" />
+<template img>
+  <main>
+    <form class="row flex-center flex" @submit.prevent="handleLogin">
+      <div class="col-6 form-widget">
+        <h1 class="header">Welcome to _ Blogpost!</h1>
+        <p class="description">
+          Here you can share your experiences and ideas with people around the globe!
+        </p>
+        <div>
+          <input
+            class="inputField"
+            required
+            type="email"
+            placeholder="Your email"
+            v-model="email"
+          />
+        </div>
+        <div>
+          <input
+            type="submit"
+            class="button block"
+            :value="loading ? 'Loading' : 'Send magic link'"
+            :disabled="loading"
+          />
+        </div>
       </div>
-      <div>
-        <input
-          type="submit"
-          class="button block"
-          :value="loading ? 'Loading' : 'Send magic link'"
-          :disabled="loading"
-        />
-      </div>
-    </div>
-  </form>
+    </form>
+  </main>
 </template>
+<style>
+main {
+  background-image: url('https://img.freepik.com/premium-photo/image-colorful-galaxy-sky-generative-ai_791316-9864.jpg?w=2000');
+}
+</style>
