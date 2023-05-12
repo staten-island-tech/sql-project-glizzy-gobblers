@@ -1,30 +1,24 @@
 <template>
-<h1></h1>
+<h1>{{ data }}</h1>
 </template>
 
 
-<script>
-import { ref} from 'vue'
+<script setup>
+import { ref, onMounted } from 'vue'
+import { onBeforeMount } from 'vue';
 import { supabase } from '../supabase'
 
-export default{
-  data() {
-    return{
-      postdata: []
-    }
-  },
-  methods:{
-    getdata: async function(){
-      let { data, error } = await supabase
-     .from('userpost')
-     .select()
-     console.log(data)
-    }
-  },
-  beforeMount(){
-    this.getdata()
-  }
+async function getdata(){
+  let { data, error } = await supabase
+  .from('userpost')
+  .select()
+  console.log(data)
 }
 
+
+
+onMounted(() => {
+getdata()
+})
 
 </script>
