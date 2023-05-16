@@ -1,40 +1,84 @@
 <template>
 
-<div class="blogsection">
+<!-- <div class="blogpage">
 
-<div class="blogcontainer">
+  <div class="postbox">
 
-  <div class="blogbox">
+  <h1 class="createdby">Kevin</h1>
+        <div class="postimage">
+           <img class="img" src="https://cdn.britannica.com/34/233234-050-1649BFA9/Pug-dog.jpg">
+        </div>
+        <div class="titlepage">
+          <h1 class="title">Title</h1>
+        </div>
+  <div class="descriptionpage">
+       <h1 class="postdescription">
+        see a dog post a dog! yall ever seen a dog?
+       </h1>
+  </div>
 
-<div class="username">
-       created by Kevin
+  </div>
+
+</div> -->
+
+ <div v-for="data in database">
+     <div class="blogpage">
+
+  <div class="postbox">
+
+  <h1 class="createdby">{{ data.createdby }}</h1>
+        <div class="postimage">
+           <img class="img" :src="data.imagelink">
+        </div>
+        <div class="titlepage">
+          <h1 class="title">{{ data.title }}</h1>
+        </div>
+  <div class="descriptionpage">
+       <h1 class="postdescription">
+        {{ data.description }}
+       </h1>
+  </div>
+
+  </div>
+
+</div>
 </div>
 
-<div class="image">
-      <img src="https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000000964/811461b8d1cacf1f2da791b478dccfe2a55457780364c3d5a95fbfcdd4c3086f">
-</div>
-
-<div class="blogdescription">
-     this is my fist bloidhsdj
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div v-for="data in database">
-<h1>{{ data.title }}</h1>
-</div>
 </template>
 
 <style scoped>
-.blogcontainer{
+
+.blogpage{
+  margin-left: 40px;
+}
+.postbox{
+  width: 500px;
+  height: 700px;
+  border: 3px black solid;
+  margin-bottom: 20px;
+}
+.createdby{
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.postimage{
   display: flex;
   justify-content: center;
-  border: 3px solid black;
 }
+.img{
+  width: 480px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.title{
+  font-size: 30px;
+}
+.postdescription{
+  font-size: 20px;
+}
+
 </style>
 
 
