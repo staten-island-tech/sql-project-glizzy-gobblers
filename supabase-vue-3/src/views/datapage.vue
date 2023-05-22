@@ -35,6 +35,11 @@
               {{ data.description }}
             </h1>
             <img class="heart" src="https://i.stack.imgur.com/Ui4gd.png" alt="" />
+            <img
+              class="report"
+              src="https://thumbs.dreamstime.com/b/report-button-rounded-sign-white-background-isolated-196831119.jpg"
+              alt=""
+            />
           </div>
         </div>
       </div>
@@ -56,6 +61,11 @@ body {
 
   height: 32px;
 }
+.report {
+  margin-left: 10px;
+
+  height: 32px;
+}
 .blogpage {
   display: flex;
   align-items: center;
@@ -63,13 +73,12 @@ body {
 }
 .postbox {
   background-color: white;
-  width: 500px;
-  height: 600px;
+  width: 600px;
+  height: 700px;
   border: 3px black solid;
   margin-bottom: 25px;
 }
 .createdby {
-  margin-left: 10px;
   font-size: 20px;
 }
 
@@ -79,8 +88,8 @@ body {
 }
 .img {
   border: 2px black solid;
-  width: 480px;
-  height: 400px;
+  width: 580px;
+  height: 500px;
   object-fit: cover;
 }
 
