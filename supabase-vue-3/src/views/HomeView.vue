@@ -1,6 +1,7 @@
 <script>
 import { ref } from 'vue';
 import loginpage from './loginpage.vue'
+import createacc from './createacc.vue'
 
 export default{
   data(){
@@ -14,10 +15,14 @@ export default{
     },
     createaccount: function(){
       this.page = 'createaccount'
+    },
+    returnback: function(){
+      this.page = 'homepage'
     }
   },
   components:{
-    loginpage
+    loginpage,
+    createacc
   }
 }
 </script>
@@ -28,18 +33,28 @@ export default{
     <h1 class="title">TechBlog</h1>
     <div class="btnpage">
       <button @click="loginpage" class="btn">Login</button>
-      <button class="btn">Create Account</button>
+      <button @click="createaccount" class="btn">Create Account</button>
     </div>
   </div>
 
     <div v-if="page === 'loginpage'">
+      <button class="back">Back</button>
         <loginpage/>
+    </div>
+
+    <div v-if="page === 'createaccount'">
+      <button @click="returnback" class="back">Back</button>
+      <createacc/>
     </div>
 
 </template>
 
 <style scoped>
 
+.back{
+  font-size: 20px;
+  background-color: white;
+}
 .title{
   font-size: 100px;
   text-align: center;
