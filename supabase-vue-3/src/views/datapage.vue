@@ -1,25 +1,9 @@
 <template>
-  <!-- <div class="blogpage">
-
-  <div class="postbox">
-
-  <h1 class="createdby">Kevin</h1>
-        <div class="postimage">
-           <img class="img" src="https://cdn.britannica.com/34/233234-050-1649BFA9/Pug-dog.jpg">
-        </div>
-        <div class="titlepage">
-          <h1 class="title">Title</h1>
-        </div>
-  <div class="descriptionpage">
-       <h1 class="postdescription">
-        see a dog post a dog! yall ever seen a dog?
-       </h1>
-  </div>
-
-  </div>
-
-</div> -->
   <body>
+    <h2>
+      <button class="log">Logout</button>
+      <button class="log">Login</button>
+    </h2>
     <div v-for="data in database">
       <div class="blogpage">
         <div class="postbox">
@@ -56,13 +40,20 @@ h1 {
 body {
   background-color: rgb(255, 89, 100);
 }
+
+.log {
+  padding: 1rem 3.5rem;
+  display: inline-block;
+  margin: 1rem;
+  font-size: 2rem;
+  background-color: white;
+}
 .heart {
   margin-left: 10px;
-
   height: 32px;
 }
 .report {
-  margin-left: 10px;
+  margin-left: 500px;
 
   height: 32px;
 }
@@ -73,10 +64,10 @@ body {
 }
 .postbox {
   background-color: white;
-  width: 600px;
-  height: 700px;
+  width: 650px;
+  height: 750px;
   border: 3px black solid;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
 }
 .createdby {
   font-size: 20px;
@@ -88,8 +79,8 @@ body {
 }
 .img {
   border: 2px black solid;
-  width: 580px;
-  height: 500px;
+  width: 630px;
+  height: 550px;
   object-fit: cover;
 }
 
