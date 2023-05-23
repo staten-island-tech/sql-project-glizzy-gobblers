@@ -3,5 +3,8 @@ import { defineStore } from 'pinia'
 
 export const useCounterStore = defineStore('counter', () => {
   let page = 'homepage'
-  return { page }
+  let loggedIn = false
+  let username = ''
+  let password = ''
+  return { page, username, password }
 })
