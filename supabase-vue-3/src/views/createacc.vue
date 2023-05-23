@@ -10,7 +10,7 @@ async function createacc(){
 const { data, error } = await supabase
   .from('useraccount')
   .insert([
-    { username: 'fsdfdsfs' },
+    { username: `${usernameinput.value}`, password: `${passwordinput.value}` },
   ])
 
 }

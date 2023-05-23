@@ -1,30 +1,20 @@
-<script>
+<script setup>
 import { ref } from 'vue';
 import loginpage from './loginpage.vue'
 import createacc from './createacc.vue'
+import { useCounterStore } from '../stores/counter'
 
-export default{
-  data(){
-    return{
-      page: 'homepage'
-    }
-  },
-  methods:{
-    loginpage: function(){
-      this.page = 'loginpage'
-    },
-    createaccount: function(){
-      this.page = 'createaccount'
-    },
-    returnback: function(){
-      this.page = 'homepage'
-    }
-  },
-  components:{
-    loginpage,
-    createacc
-  }
+let res = useCounterStore()
+let page = ref('homepage')
+
+function createaccount(){
+  useCounterStore().page = 'createaccount'
+  page.value = useCounterStore().page
+  console.log(page.value)
 }
+
+
+
 </script>
 
 <template>
@@ -38,12 +28,10 @@ export default{
   </div>
 
     <div v-if="page === 'loginpage'">
-      <button class="back">Back</button>
         <loginpage/>
     </div>
 
     <div v-if="page === 'createaccount'">
-      <button @click="returnback" class="back">Back</button>
       <createacc/>
     </div>
 
@@ -51,10 +39,6 @@ export default{
 
 <style scoped>
 
-.back{
-  font-size: 20px;
-  background-color: white;
-}
 .title{
   font-size: 100px;
   text-align: center;
