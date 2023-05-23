@@ -44,16 +44,17 @@
 
 <style scoped>
 h1 {
-  color: brown;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: black;
   text-align: center;
 }
 body {
-  background-color: rgb(248, 200, 220);
+  background-color: rgb(255, 89, 100);
 }
 .heart {
   margin-left: 10px;
 
-  height: 35px;
+  height: 32px;
 }
 .blogpage {
   display: flex;
@@ -77,6 +78,7 @@ body {
   justify-content: center;
 }
 .img {
+  border: 2px black solid;
   width: 480px;
   height: 400px;
   object-fit: cover;
