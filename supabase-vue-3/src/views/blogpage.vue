@@ -35,6 +35,7 @@ h1 {
 }
 body {
   background-color: rgb(255, 89, 100);
+  text-align: center;
 }
 
 .heart {

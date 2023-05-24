@@ -4,7 +4,7 @@
   </div>
 
   <div>
-    <button class="return" @click="returnto">Back</button>
+    <button id="but" class="return" @click="returnto">Back</button>
   </div>
 
   <div class="accountinfo">
@@ -19,11 +19,17 @@
   </div>
 
   <div>
-    <button @click="verifylogin" class="loginbtn">Login</button>
+    <button @click="verifylogin" class="loginbtn" id="but">Login</button>
   </div>
 </template>
 
 <style scoped>
+#but {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 .title {
   font-size: 50px;
   text-align: center;
