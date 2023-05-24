@@ -1,17 +1,13 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import datapage from './views/datapage.vue'
 </script>
 
 <template>
-  <body>
-    <header>
-      <RouterLink to="/">123123</RouterLink>
-      <RouterLink to="/about">123123123</RouterLink>
-    </header>
-
-    <RouterView />
-  </body>
+  <header>
+    <!-- <RouterLink to="/">Home</RouterLink>
+    <RouterLink to="/about">About</RouterLink> -->
+  </header>
+  <RouterView />
 </template>
 
 <style scoped>

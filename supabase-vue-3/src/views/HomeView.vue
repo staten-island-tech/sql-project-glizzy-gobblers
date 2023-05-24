@@ -1,34 +1,56 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+import loginpage from './loginpage.vue'
+import createacc from './createacc.vue'
+import loggedInHomePage from './loggedInHomePage.vue'
+import { useCounterStore } from '../stores/counter'
+
+function createaccount() {
+  useCounterStore().page = 'createaccountpage'
+}
+
+function login() {
+  useCounterStore().page = 'loginpage'
+}
+ref(useCounterStore())
+</script>
 
 <template>
-  <div>
-    <h1>I will never take my glorious king for granted🥰🐐👑</h1>
-    <img
-      src="https://i.ytimg.com/vi/BZCB8yMSkWI/maxresdefault.jpg"
-      alt="My Glorious King"
-      class="center"
-    />
+  <div class="homepage" v-if="useCounterStore().page === 'homepage'">
+    <h1 class="title">TechBlog</h1>
+    <div class="btnpage">
+      <button @click="login" class="btn">Login</button>
+      <button @click="createaccount" class="btn">Create Account</button>
+    </div>
+  </div>
+
+  <div v-if="useCounterStore().page === 'loginpage'">
+    <loginpage />
+  </div>
+
+  <div v-if="useCounterStore().page === 'createaccountpage'">
+    <createacc />
+  </div>
+
+  <div v-if="useCounterStore().loggedIn === true">
+    <loggedInHomePage />
   </div>
 </template>
 
 <style scoped>
-h1 {
-  color: brown;
+.title {
+  font-size: 100px;
   text-align: center;
 }
-div {
-  background-color: rgb(248, 200, 220);
-  padding-bottom: 600px;
+
+.btnpage {
+  margin-top: 100px;
+  text-align: center;
 }
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+.btn {
+  font-size: 50px;
+  background-color: transparent;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 </style>
-<!-- <style>
-template {
-  background-image: url('https://img.freepik.com/premium-photo/image-colorful-galaxy-sky-generative-ai_791316-9864.jpg?w=2000');
-}
-</style> -->
