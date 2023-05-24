@@ -1,24 +1,4 @@
 <template>
-  <!-- <div class="blogpage">
-
-  <div class="postbox">
-
-  <h1 class="createdby">Kevin</h1>
-        <div class="postimage">
-           <img class="img" src="https://cdn.britannica.com/34/233234-050-1649BFA9/Pug-dog.jpg">
-        </div>
-        <div class="titlepage">
-          <h1 class="title">Title</h1>
-        </div>
-  <div class="descriptionpage">
-       <h1 class="postdescription">
-        see a dog post a dog! yall ever seen a dog?
-       </h1>
-  </div>
-
-  </div>
-
-</div> -->
   <body>
     <div v-for="data in database">
       <div class="blogpage">
@@ -35,6 +15,11 @@
               {{ data.description }}
             </h1>
             <img class="heart" src="https://i.stack.imgur.com/Ui4gd.png" alt="" />
+            <img
+              class="report"
+              src="https://thumbs.dreamstime.com/b/report-button-rounded-sign-white-background-isolated-196831119.jpg"
+              alt=""
+            />
           </div>
         </div>
       </div>
@@ -51,8 +36,13 @@ h1 {
 body {
   background-color: rgb(255, 89, 100);
 }
+
 .heart {
   margin-left: 10px;
+  height: 32px;
+}
+.report {
+  margin-left: 500px;
 
   height: 32px;
 }
@@ -63,13 +53,12 @@ body {
 }
 .postbox {
   background-color: white;
-  width: 500px;
-  height: 600px;
+  width: 650px;
+  height: 750px;
   border: 3px black solid;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
 }
 .createdby {
-  margin-left: 10px;
   font-size: 20px;
 }
 
@@ -79,8 +68,8 @@ body {
 }
 .img {
   border: 2px black solid;
-  width: 480px;
-  height: 400px;
+  width: 630px;
+  height: 550px;
   object-fit: cover;
 }
 
