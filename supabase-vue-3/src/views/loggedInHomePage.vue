@@ -5,7 +5,9 @@
     <button class="btn">Create Blog</button>
     <button @click="signout" class="btn">Sign Out</button>
   </div>
-  <blogpage />
+  <div v-if="page === 'blogpage'">
+    <blogpage />
+  </div>
 </template>
 
 <style scoped>
@@ -26,6 +28,8 @@ import blogpage from './blogpage.vue'
 import { ref } from 'vue'
 import { supabase } from '../supabase'
 import { useCounterStore } from '../stores/counter'
+
+let page = ref('blogpage')
 
 function signout() {
   useCounterStore().loggedIn = false
