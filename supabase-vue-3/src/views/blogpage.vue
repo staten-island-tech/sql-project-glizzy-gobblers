@@ -1,9 +1,5 @@
 <template>
   <body>
-    <h2>
-      <button class="log">Logout</button>
-      <button class="log">Login</button>
-    </h2>
     <div v-for="data in database">
       <div class="blogpage">
         <div class="postbox">
@@ -41,13 +37,6 @@ body {
   background-color: rgb(255, 89, 100);
 }
 
-.log {
-  padding: 1rem 3.5rem;
-  display: inline-block;
-  margin: 1rem;
-  font-size: 2rem;
-  background-color: white;
-}
 .heart {
   margin-left: 10px;
   height: 32px;
