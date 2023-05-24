@@ -2,33 +2,32 @@
   <div>
     <h1 class="title">Login to Account</h1>
   </div>
-
   <div>
-    <button id="but" class="return" @click="returnto">Back</button>
+    <button class="return" @click="returnto">Back</button>
   </div>
-
-  <div class="accountinfo">
-    Username<input v-model="usernameinput" type="text" /> Password<input
-      v-model="passwordinput"
-      type="text"
-    />
+  <div class="loginbox">
+    <div class="accountinfo">
+      Username<input v-model="usernameinput" type="text" /> Password<input
+        v-model="passwordinput"
+        type="text"
+      />
+    </div>
+    <div>
+      <button @click="verifylogin" class="loginbtn">Login</button>
+    </div>
   </div>
 
   <div>
     <h1>{{ alertmessage }}</h1>
   </div>
-
-  <div>
-    <button @click="verifylogin" class="loginbtn" id="but">Login</button>
-  </div>
 </template>
 
 <style scoped>
-#but {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.loginbox {
+  text-align: center;
+  background-color: wheat;
+  width: 850px;
+  height: auto;
 }
 .title {
   font-size: 50px;
