@@ -84,6 +84,7 @@ async function signInWithEmail() {
     useCounterStore().id = data.user.id
     useCounterStore().page = ''
     useCounterStore().loggedIn = true
+    useCounterStore().password = `${passwordinput.value}`
   }
   }}
 

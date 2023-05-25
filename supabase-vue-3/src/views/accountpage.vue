@@ -4,7 +4,7 @@
 </div>
 
 <div class="accountinfosection">
-<h1>Username: {{ useCounterStore().username }}</h1>
+<h1>Username: {{ useCounterStore().email }}</h1>
 <h1>Password: {{ useCounterStore().password }}</h1>
 </div>
 </template>
