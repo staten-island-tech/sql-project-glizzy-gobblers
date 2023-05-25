@@ -1,33 +1,44 @@
 <template>
   <div>
-    <h1 class="title">Login to Account</h1>
-  </div>
-  <div>
-    <button class="return" @click="returnto">Back</button>
-  </div>
-  <div class="loginbox">
-    <div class="accountinfo">
-      Username<input v-model="usernameinput" type="text" /> Password<input
-        v-model="passwordinput"
-        type="text"
-      />
+    <div>
+      <h1 class="title">Login to Account</h1>
     </div>
     <div>
-      <button @click="verifylogin" class="loginbtn">Login</button>
+      <button class="return" @click="returnto">Back</button>
     </div>
-  </div>
+    <div class="loginbox">
+      <div class="accountinfo">
+        Username<input v-model="usernameinput" type="text" class="putmargin" /> Password<input
+          v-model="passwordinput"
+          type="text"
+          class="marginbot"
+        />
+      </div>
+      <div>
+        <button @click="verifylogin" class="loginbtn">Login</button>
+      </div>
+    </div>
 
-  <div>
-    <h1>{{ alertmessage }}</h1>
+    <div>
+      <h1>{{ alertmessage }}</h1>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.marginbot {
+  margin-bottom: 50px;
+}
+.putmargin {
+  margin-bottom: 100px;
+}
 .loginbox {
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
-  background-color: wheat;
-  width: 850px;
-  height: auto;
+  background-color: white;
+  width: 808px;
+  height: 500px;
 }
 .title {
   font-size: 50px;
@@ -35,6 +46,7 @@
 }
 
 .accountinfo {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
 }
