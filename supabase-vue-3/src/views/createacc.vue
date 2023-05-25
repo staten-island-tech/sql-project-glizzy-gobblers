@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { ref } from 'vue'
 import { supabase } from '../supabase'
 import { useCounterStore } from '../stores/counter'
@@ -102,4 +102,50 @@ input {
   font-size: 20px;
   margin-bottom: 20px;
 }
+</style> -->
+
+
+<template>
+<div class="infobox">
+  Email<input v-model="emailinput" type="text"> 
+  Password<input v-model="passwordinput" type="text"> 
+</div>
+
+<button @click="signup">Sign Up</button>
+</template>
+
+<style scoped>
+.infobox{
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 800px;
+  font-size: 20px;
+}
 </style>
+
+<script setup>
+import { supabase } from '../supabase';
+import { ref } from 'vue'
+import { useCounterStore } from '../stores/counter'
+let emailinput = ref('')
+let passwordinput = ref('')
+
+async function signup(){
+  
+const { data, error } = await supabase.auth.signUp(
+  {
+    email: `${emailinput.value}`,
+    password: `${passwordinput.value}`,
+    options: {
+      emailRedirectTo: 'https://example.com/welcome'
+    }
+  }
+)
+
+
+}
+
+</script>
