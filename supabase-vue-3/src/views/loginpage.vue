@@ -8,7 +8,7 @@
   </div>
 
   <div class="accountinfo">
-    Username<input v-model="usernameinput" type="text" /> Password<input
+    Email<input v-model="emailinput" type="text" /> Password<input
       v-model="passwordinput"
       type="text"
     />
@@ -19,7 +19,7 @@
   </div>
 
   <div>
-    <button @click="verifylogin" class="loginbtn">Login</button>
+    <button @click="signInWithEmail" class="loginbtn">Login</button>
   </div>
 </template>
 
@@ -55,7 +55,7 @@ input {
 import { ref } from 'vue'
 import { supabase } from '../supabase'
 import { useCounterStore } from '../stores/counter'
-let usernameinput = ref('')
+let emailinput = ref('')
 let passwordinput = ref('')
 let alertmessage = ref('')
 
@@ -63,46 +63,28 @@ function returnto() {
   useCounterStore().page = 'homepage'
 }
 
-async function logintoaccount() {
-  useCounterStore().username = usernameinput.value
-  useCounterStore().password = passwordinput.value
-  useCounterStore().page = ''
-  useCounterStore().loggedIn = true
-}
-
-async function verifylogin() {
-  alertmessage.value = ''
-  const { data, error } = await supabase.from('useraccount').select()
-
-  let verification1 = false
-
-  //verify if username and password is entered//
-  if (usernameinput.value === '') {
-    alertmessage.value = 'Please enter a username'
-  } else if (passwordinput.value === '') {
-    alertmessage.value === 'Please enter a password'
-  } else {
-    verification1 = true
+async function signInWithEmail() {
+  
+  if(emailinput.value === ''){
+    alertmessage.value = 'Please enter email/password'
+  } else if(passwordinput.value === ''){
+    alertmessage.value = 'Please enter email/password'
+  }else{
+    alertmessage.value = ''
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: `${emailinput.value}`,
+    password: `${passwordinput.value}`,
+  })
+  console.log(data)
+  if(data.user === null){
+    alertmessage.value === 'Wrong username or password'
+  }else{
+    useCounterStore().email = data.user.email
+    useCounterStore().password = data.user.password
+    useCounterStore().id = data.user.id
+    useCounterStore().page = ''
+    useCounterStore().loggedIn = true
   }
+  }}
 
-  //verify if username and password entered matches database
-
-  let correctusername = ''
-  let correctpassword = ''
-  if (verification1 === true) {
-    data.forEach((data) => {
-      if (data.username === `${usernameinput.value}`) {
-        correctusername = data.username
-        correctpassword = data.password
-      }
-    })
-    if (usernameinput.value === correctusername) {
-      if (passwordinput.value === correctpassword) {
-        logintoaccount() //if matches, log in
-      }
-    } else {
-      alertmessage.value = 'Wrong username or password'
-    }
-  }
-}
 </script>

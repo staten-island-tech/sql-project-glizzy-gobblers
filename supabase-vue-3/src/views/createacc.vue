@@ -107,9 +107,11 @@ input {
 
 <template>
 <div class="infobox">
-  Email<input type="text"> 
-  Password<input type="text"> 
+  Email<input v-model="emailinput" type="text"> 
+  Password<input v-model="passwordinput" type="text"> 
 </div>
+
+<button @click="signup">Sign Up</button>
 </template>
 
 <style scoped>
@@ -128,12 +130,22 @@ input {
 import { supabase } from '../supabase';
 import { ref } from 'vue'
 import { useCounterStore } from '../stores/counter'
+let emailinput = ref('')
+let passwordinput = ref('')
 
 async function signup(){
-  const { data, error } = await supabase.auth.signUp({
-  email: 'example@email.com',
-  password: 'example-password',
-})
+  
+const { data, error } = await supabase.auth.signUp(
+  {
+    email: `${emailinput.value}`,
+    password: `${passwordinput.value}`,
+    options: {
+      emailRedirectTo: 'https://example.com/welcome'
+    }
+  }
+)
+
+
 }
 
 </script>
