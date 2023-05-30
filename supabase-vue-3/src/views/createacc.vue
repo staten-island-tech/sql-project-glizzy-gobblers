@@ -155,8 +155,6 @@ const { data, error } = await supabase.auth.signUp(
     }
   }
 )
-
-
 }
 
 function returnto() {

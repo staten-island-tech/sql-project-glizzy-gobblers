@@ -7,5 +7,5 @@ export const useCounterStore = defineStore('counter', () => {
   let email = ''
   let password = ''
   let id = ''
-  return { page, email, password, id, loggedIn }
+  return { page, email, password, id, loggedIn,}
 })

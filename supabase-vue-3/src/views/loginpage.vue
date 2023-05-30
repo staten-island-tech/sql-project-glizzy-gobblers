@@ -95,6 +95,7 @@ async function signInWithEmail() {
       useCounterStore().page = ''
       useCounterStore().loggedIn = true
       useCounterStore().password = `${passwordinput.value}`
+      useCounterStore().user = data.user.username
     }
   }
 }
