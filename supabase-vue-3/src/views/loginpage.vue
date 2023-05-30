@@ -1,25 +1,5 @@
 <template>
   <div>
-    <div>
-      <h1 class="title">Login to Account</h1>
-    </div>
-    <div>
-      <button class="return" @click="returnto">Back</button>
-    </div>
-    <div class="loginbox">
-      <div class="accountinfo">
-        Username<input v-model="usernameinput" type="text" class="putmargin" /> Password<input
-          v-model="passwordinput"
-          type="text"
-          class="marginbot"
-        />
-      </div>
-      <div>
-        <button @click="verifylogin" class="loginbtn">Login</button>
-      </div>
-    </div>
-
-  <div>
     <button class="return" @click="returnto">Back</button>
   </div>
 
@@ -95,28 +75,27 @@ function returnto() {
 }
 
 async function signInWithEmail() {
-  
-  if(emailinput.value === ''){
+  if (emailinput.value === '') {
     alertmessage.value = 'Please enter email/password'
-  } else if(passwordinput.value === ''){
+  } else if (passwordinput.value === '') {
     alertmessage.value = 'Please enter email/password'
-  }else{
+  } else {
     alertmessage.value = ''
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: `${emailinput.value}`,
-    password: `${passwordinput.value}`,
-  })
-  console.log(data)
-  if(data.user === null){
-    alertmessage.value === 'Wrong username or password'
-  }else{
-    useCounterStore().email = data.user.email
-    useCounterStore().password = data.user.password
-    useCounterStore().id = data.user.id
-    useCounterStore().page = ''
-    useCounterStore().loggedIn = true
-    useCounterStore().password = `${passwordinput.value}`
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: `${emailinput.value}`,
+      password: `${passwordinput.value}`
+    })
+    console.log(data)
+    if (data.user === null) {
+      alertmessage.value === 'Wrong username or password'
+    } else {
+      useCounterStore().email = data.user.email
+      useCounterStore().password = data.user.password
+      useCounterStore().id = data.user.id
+      useCounterStore().page = ''
+      useCounterStore().loggedIn = true
+      useCounterStore().password = `${passwordinput.value}`
+    }
   }
-  }}
-
+}
 </script>
