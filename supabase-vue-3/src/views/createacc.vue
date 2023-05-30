@@ -106,6 +106,11 @@ input {
 
 
 <template>
+
+<div>
+    <button class="return" @click="returnto">Back</button>
+  </div>
+
 <div class="infobox">
   Email<input v-model="emailinput" type="text"> 
   Password<input v-model="passwordinput" type="text"> 
@@ -123,6 +128,12 @@ input {
 input {
   width: 800px;
   font-size: 20px;
+}
+
+.return {
+  background-color: white;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 </style>
 
@@ -146,6 +157,10 @@ const { data, error } = await supabase.auth.signUp(
 )
 
 
+}
+
+function returnto() {
+  useCounterStore().page = 'homepage'
 }
 
 </script>
