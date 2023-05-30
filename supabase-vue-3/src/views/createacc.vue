@@ -1,128 +1,44 @@
-<!-- <script setup>
-import { ref } from 'vue'
-import { supabase } from '../supabase'
-import { useCounterStore } from '../stores/counter'
-ref(useCounterStore())
-
-let usernameinput = ref('')
-let passwordinput = ref('')
-let alertmessage = ref('')
-
-async function createacc() {
-  //create account if account username is not taken//
-  const { data, error } = await supabase
-    .from('useraccount')
-    .insert([
-      { username: `${usernameinput.value}`, password: `${passwordinput.value}`, admin: false }
-    ])
-}
-
-async function checkaccount() {
-  alertmessage.value = ''
-  //verify if account username is taken already//
-  const { data, error } = await supabase.from('useraccount').select()
-  let allusername = []
-  data.forEach((data) => {
-    allusername.push(data.username)
-  })
-  if (usernameinput.value === '') {
-    if (passwordinput.value === '') {
-      alertmessage.value = 'Please enter a username and password'
-    } else {
-      alertmessage.value = 'Please enter a username'
-    }
-  } else if (passwordinput.value === '') {
-    if (usernameinput.value === '') {
-      alertmessage.value = 'Please enter a username and password'
-    } else {
-      alertmessage.value = 'Please enter a password'
-    }
-  } else {
-    if (allusername.includes(usernameinput.value)) {
-      alertmessage.value = 'Username taken, use another one plz'
-    } else {
-      createacc() //if all requirement are fulfilled//
-      alertmessage.value = 'Account Created'
-    }
-  }
-}
-
-function returnto() {
-  useCounterStore().page = 'homepage'
-}
-</script>
-
 <template>
-  <div>
-    <h1 class="title">Create Account</h1>
-  </div>
-
   <div>
     <button class="return" @click="returnto">Back</button>
   </div>
+  <h1>Create Account</h1>
+  <div class="createacc">
+    <div class="infobox">
+      Email<input v-model="emailinput" type="text" class="putmargin2" /> Password<input
+        v-model="passwordinput"
+        type="text"
+        class="marginbot2"
+      />
+    </div>
 
-  <div class="accountinfo">
-    Username<input v-model="usernameinput" type="text" /> Password<input
-      v-model="passwordinput"
-      type="text"
-    />
-  </div>
-
-  <div>
-    <h1>{{ alertmessage }}</h1>
-  </div>
-
-  <div>
-    <button class="createbtn" @click="checkaccount">Create Account</button>
+    <button class="button1" @click="signup">Sign Up</button>
   </div>
 </template>
+
 <style scoped>
-.title {
-  font-size: 50px;
+h1 {
   text-align: center;
+  margin-top: 135px;
 }
-
-.accountinfo {
-  display: flex;
-  flex-direction: column;
-}
-
-input {
-  width: 800px;
-  font-size: 20px;
-}
-
-.createbtn {
-  margin-top: 20px;
+.button1 {
+  margin-top: 135px;
   background-color: white;
 }
-
-.return {
-  background-color: white;
-  font-size: 20px;
-  margin-bottom: 20px;
+.putmargin2 {
+  margin-bottom: 100px;
 }
-</style> -->
-
-
-<template>
-
-<div>
-    <button class="return" @click="returnto">Back</button>
-  </div>
-
-<div class="infobox">
-  Email<input v-model="emailinput" type="text"> 
-  Password<input v-model="passwordinput" type="text"> 
-</div>
-
-<button @click="signup">Sign Up</button>
-</template>
-
-<style scoped>
-.infobox{
-  display: flex;
-  flex-direction: column;
+.marginbot {
+  margin-bottom: 25px;
+}
+.createacc {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: white;
+  margin-top: 50px;
+  width: 808px;
+  height: 500px;
 }
 
 input {
@@ -138,29 +54,23 @@ input {
 </style>
 
 <script setup>
-import { supabase } from '../supabase';
+import { supabase } from '../supabase'
 import { ref } from 'vue'
 import { useCounterStore } from '../stores/counter'
 let emailinput = ref('')
 let passwordinput = ref('')
 
-async function signup(){
-  
-const { data, error } = await supabase.auth.signUp(
-  {
+async function signup() {
+  const { data, error } = await supabase.auth.signUp({
     email: `${emailinput.value}`,
     password: `${passwordinput.value}`,
     options: {
       emailRedirectTo: 'https://example.com/welcome'
     }
-  }
-)
-
-
+  })
 }
 
 function returnto() {
   useCounterStore().page = 'homepage'
 }
-
 </script>

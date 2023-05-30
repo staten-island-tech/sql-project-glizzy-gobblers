@@ -2,26 +2,31 @@
   <div>
     <button class="return" @click="returnto">Back</button>
   </div>
+  <h1>Account Login</h1>
+  <div class="loginbox">
+    <div class="accountinfo">
+      Email<input v-model="emailinput" type="text" class="putmargin" />
 
-  <div class="accountinfo">
-    Email<input v-model="emailinput" type="text" /> Password<input
-      v-model="passwordinput"
-      type="text"
-    />
-  </div>
+      Password<input v-model="passwordinput" type="text" class="marginbot" />
+    </div>
 
-  <div>
-    <h1>{{ alertmessage }}</h1>
-  </div>
+    <div>
+      <h1>{{ alertmessage }}</h1>
+    </div>
 
-  <div>
-    <button @click="signInWithEmail" class="loginbtn">Login</button>
+    <div>
+      <button @click="signInWithEmail" class="loginbtn">Login</button>
+    </div>
   </div>
 </template>
 
 <style scoped>
+h1 {
+  text-align: center;
+  margin-top: 135px;
+}
 .marginbot {
-  margin-bottom: 50px;
+  margin-bottom: 1px;
 }
 .putmargin {
   margin-bottom: 100px;
@@ -31,6 +36,7 @@
   margin-right: auto;
   text-align: center;
   background-color: white;
+
   width: 808px;
   height: 500px;
 }
@@ -43,6 +49,7 @@
   margin-top: 50px;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 input {
@@ -51,7 +58,7 @@ input {
 }
 
 .loginbtn {
-  margin-top: 20px;
+  margin-top: 2px;
   background-color: white;
 }
 
