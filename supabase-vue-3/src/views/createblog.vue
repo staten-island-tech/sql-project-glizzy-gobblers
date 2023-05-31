@@ -11,6 +11,10 @@
         Image<input v-model="image" type="text">
     </div>
 
+<div>
+    <h1>{{ alertmessage }} </h1>
+</div>
+
     <div>
         <button @click="checkblog">Create Blog</button>
     </div>
@@ -32,20 +36,22 @@
 import { ref } from 'vue';
 import { useCounterStore } from '../stores/counter'
 import { supabase } from '../supabase'
+let alertmessage = ref('')
 let name = ref('')
 let title = ref('')
 let description = ref('')
 let image = ref('')
 
+
 async function checkblog(){
-    createblog()
+   createblog()
 }
 
 async function createblog(){
     const { data, error } = await supabase
   .from('userpost')
   .insert([
-    { title: `${title.value}`, description: `${description.value}`, createdby: `${name.value}`, imagelink: `${image.value}` },
+    { title: `${title.value}`, description: `${description.value}`, createdby: `${name.value}`, imagelink: `${image.value}`, userid: `${useCounterStore().id}` },
   ])
 
 }
