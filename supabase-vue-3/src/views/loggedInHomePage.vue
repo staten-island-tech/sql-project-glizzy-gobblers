@@ -53,7 +53,8 @@ function changetoaccpage(){
 page.value = 'accountpage'
 }
 
-function signout() {
+async function signout() {
+const { error } = await supabase.auth.signOut()
   useCounterStore().loggedIn = false
   useCounterStore().page = 'homepage'
   username = ''
