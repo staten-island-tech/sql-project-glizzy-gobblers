@@ -38,6 +38,10 @@ ref(useCounterStore())
 </template>
 
 <style scoped>
+h1 {
+  margin-top: 300px;
+}
+
 .title {
   font-size: 100px;
   text-align: center;

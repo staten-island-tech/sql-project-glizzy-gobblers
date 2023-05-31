@@ -35,7 +35,6 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  background-color: white;
 
   width: 808px;
   height: 500px;
