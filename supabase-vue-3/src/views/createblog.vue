@@ -18,7 +18,7 @@
     </div>
 
     <div>
-      <button @click="checkblog">Create Blog</button>
+      <button @click="createblog">Create Blog</button>
     </div>
   </body>
 </template>
@@ -59,17 +59,15 @@ let title = ref('')
 let description = ref('')
 let image = ref('')
 
-async function checkblog() {
-  createblog()
-}
-
 async function createblog() {
-  const { data, error } = await supabase.from('userpost').insert([
+  console.log('dshdfjijjfdksjf')
+  const { data, error } = await supabase.from('userposts').insert([
     {
       title: `${title.value}`,
       description: `${description.value}`,
       createdby: `${name.value}`,
-      imagelink: `${image.value}`
+      imagelink: `${image.value}`,
+      userid: `${useCounterStore().id}`
     }
   ])
 }

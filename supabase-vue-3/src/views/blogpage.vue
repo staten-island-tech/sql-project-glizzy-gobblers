@@ -70,7 +70,7 @@ import { supabase } from '../supabase'
 let database = ref('')
 
 async function getdata() {
-  const { data, error } = await supabase.from('userpost').select()
+  let { data, error } = await supabase.from('userposts').select()
   console.log(data)
   database.value = data
 }

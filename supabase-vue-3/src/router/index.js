@@ -3,22 +3,20 @@ import HomeView from '../views/HomeView.vue'
 import { useCounterStore } from '../stores/counter'
 import loggedinpage from '../views/loggedInHomePage.vue'
 
-
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: '/homeview',
       component: HomeView
     },
     {
-      path: '/blogpage',
-      name: 'blogpage',
-      component: loggedinpage,
-      }
-    
+      path: '/loggedinpage',
+      name: 'home',
+      component: loggedinpage
+    }
+
     // {
     //   path: '/about',
     //   name: 'about',
@@ -29,4 +27,5 @@ const router = createRouter({
     // }
   ]
 })
+
 export default router
