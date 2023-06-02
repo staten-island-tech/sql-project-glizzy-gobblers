@@ -1,27 +1,32 @@
 <template>
-  <div>
-    <h1 class="title">Create Blog</h1>
-  </div>
+  <body>
+    <div>
+      <h1 class="title">Create Blog</h1>
+    </div>
 
-  <div class="bloginfo">
-    Name<input v-model="name" class="marg1" type="text" /> Title<input
-      v-model="title"
-      class="marg2"
-      type="text"
-    />
-    Description<input v-model="description" class="marg3" type="text" /> Image<input
-      v-model="image"
-      class="marg4"
-      type="text"
-    />
-  </div>
+    <div class="bloginfo">
+      Name<input v-model="name" class="marg1" type="text" /> Title<input
+        v-model="title"
+        class="marg2"
+        type="text"
+      />
+      Description<input v-model="description" class="marg3" type="text" /> Image<input
+        v-model="image"
+        class="marg4"
+        type="text"
+      />
+    </div>
 
-  <div>
-    <button @click="checkblog">Create Blog</button>
-  </div>
+    <div>
+      <button @click="checkblog">Create Blog</button>
+    </div>
+  </body>
 </template>
 
 <style scoped>
+body {
+  padding: 100px;
+}
 .marg1 {
   margin-bottom: 40px;
 }

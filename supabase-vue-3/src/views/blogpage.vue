@@ -14,12 +14,6 @@
             <h1 class="postdescription">
               {{ data.description }}
             </h1>
-            <img class="heart" src="https://i.stack.imgur.com/Ui4gd.png" alt="" />
-            <img
-              class="report"
-              src="https://thumbs.dreamstime.com/b/report-button-rounded-sign-white-background-isolated-196831119.jpg"
-              alt=""
-            />
           </div>
         </div>
       </div>
@@ -33,20 +27,7 @@ h1 {
   color: black;
   text-align: center;
 }
-body {
-  background-color: rgb(255, 89, 100);
-  text-align: center;
-}
 
-.heart {
-  margin-left: 10px;
-  height: 32px;
-}
-.report {
-  margin-left: 500px;
-
-  height: 32px;
-}
 .blogpage {
   display: flex;
   align-items: center;
@@ -57,7 +38,7 @@ body {
   width: 650px;
   height: 750px;
   border: 3px black solid;
-  margin-bottom: 35px;
+  margin-bottom: 50px;
 }
 .createdby {
   font-size: 20px;
