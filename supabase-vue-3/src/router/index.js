@@ -5,7 +5,6 @@ import loggedinpage from '../views/loggedInHomePage.vue'
 
 
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -17,7 +16,9 @@ const router = createRouter({
     {
       path: '/blogpage',
       name: 'blogpage',
-    }
+      component: loggedinpage,
+      }
+    
     // {
     //   path: '/about',
     //   name: 'about',
@@ -28,5 +29,4 @@ const router = createRouter({
     // }
   ]
 })
-
 export default router
