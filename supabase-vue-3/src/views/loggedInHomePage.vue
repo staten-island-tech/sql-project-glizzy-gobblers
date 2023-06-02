@@ -10,12 +10,12 @@
   </div>
 
   <div v-if="page === 'accountpage'">
-    <accountpage/>
+    <accountpage />
   </div>
 
   <div v-if="page === 'createblogpage'">
-    <createblogpage/>
-</div>
+    <createblogpage />
+  </div>
 </template>
 
 <style scoped>
@@ -28,6 +28,18 @@
 .btn {
   font-size: 20px;
   background-color: white;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  margin: 1rem;
+  font-size: 2rem;
+  border-radius: 10rem;
+  transition: all 0.2s;
+  position: relative;
+  animation: moveInBottom 0.5s ease-out 0.75s;
+  animation-fill-mode: backwards;
 }
 </style>
 
@@ -41,16 +53,16 @@ import { useCounterStore } from '../stores/counter'
 
 let page = ref('blogpage')
 
-function changetoblog(){
-page.value = 'blogpage'
+function changetoblog() {
+  page.value = 'blogpage'
 }
 
-function changetocreateblog(){
-page.value = 'createblogpage'
+function changetocreateblog() {
+  page.value = 'createblogpage'
 }
 
-function changetoaccpage(){
-page.value = 'accountpage'
+function changetoaccpage() {
+  page.value = 'accountpage'
 }
 
 async function signout() {
