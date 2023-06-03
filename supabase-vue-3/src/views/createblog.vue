@@ -20,6 +20,10 @@
     <div>
       <button @click="createblog">Create Blog</button>
     </div>
+
+    <h1>
+      {{ alertmessage }}
+    </h1>
   </body>
 </template>
 
@@ -58,9 +62,9 @@ let name = ref('')
 let title = ref('')
 let description = ref('')
 let image = ref('')
+let alertmessage = ref('')
 
 async function createblog() {
-  console.log('dshdfjijjfdksjf')
   const { data, error } = await supabase.from('userposts').insert([
     {
       title: `${title.value}`,
@@ -70,5 +74,6 @@ async function createblog() {
       userid: `${useCounterStore().id}`
     }
   ])
+  alertmessage.value = 'Blog Created'
 }
 </script>

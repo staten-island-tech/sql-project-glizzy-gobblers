@@ -17,14 +17,25 @@
             <img class="img" :src="data.imagelink" />
           </div>
           <div class="titlepage">
-            <h1 class="title">{{ data.title }}</h1>
+            <div v-if="currentmode === 'NonEdit'">
+              <h1 class="title">{{ data.title }}</h1>
+            </div>
+            <div v-else>Title<input v-bind="newtitle" class="title" /></div>
           </div>
           <div class="descriptionpage">
-            <h1 class="postdescription">
-              {{ data.description }}
-            </h1>
-            <button @click="deletepost" class="btn">Delete</button>
-            <button class="btn">Edit</button>
+            <div v-if="currentmode === 'NonEdit'">
+              <h1 class="postdescription">
+                {{ data.description }}
+              </h1>
+            </div>
+            <div v-else>Description <input v-bind="newdescription" class="postdescription" /></div>
+            <div class="btnbox">
+              <button @click="deletepost(data)" class="btn">Delete</button>
+              <button @click="editpost" class="btn">Edit</button>
+              <div v-if="currentmode === 'EditMode'">
+                <button @click="updateEdit" class="btn">Confirm Edit</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -33,9 +44,19 @@
 </template>
 
 <style scoped>
+.btnbox {
+  display: flex;
+  flex-direction: row;
+}
+input {
+  width: 98.8%;
+  height: 20px;
+  font-size: 5px;
+}
 .btn {
   background-color: transparent;
   font-size: 20px;
+  margin-top: 5px;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -97,6 +118,10 @@ import { supabase } from '../supabase'
 import { onMounted } from 'vue'
 ref(useCounterStore())
 
+let currentmode = ref('NonEdit')
+let newtitle = ref('')
+let newdescription = ref('')
+
 let mypost = ref('')
 async function getdata() {
   const { data, error } = await supabase.from('userposts').select()
@@ -106,15 +131,25 @@ async function getdata() {
       data2.push({
         title: data.title,
         description: data.description,
-        imagelink: data.imagelink
+        imagelink: data.imagelink,
+        createdby: data.createdby
       })
     }
   })
   mypost.value = data2
 }
 
-async function deletepost() {
-  const { data, error } = await supabase.from('userposts').select()
+async function deletepost(row) {
+  const { data, error } = await supabase.from('userposts').delete().eq('title', `${row.title}`)
+  getdata()
+}
+
+async function editpost() {
+  currentmode.value = 'EditMode'
+}
+
+async function updateEdit() {
+  currentmode.value = 'NonEdit'
 }
 
 onMounted(() => {
