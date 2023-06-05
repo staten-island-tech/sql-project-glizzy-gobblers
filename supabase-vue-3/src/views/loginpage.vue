@@ -105,4 +105,5 @@ async function signInWithEmail() {
     }
   }
 }
+
 </script>

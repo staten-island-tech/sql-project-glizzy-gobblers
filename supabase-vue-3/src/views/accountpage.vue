@@ -20,7 +20,7 @@
             <div v-if="currentmode === 'NonEdit'">
               <h1 class="title">{{ data.title }}</h1>
             </div>
-            <div v-else>Title<input v-bind="newtitle" class="title" /></div>
+            <div v-else>Title<input v-model="newtitle" /></div>
           </div>
           <div class="descriptionpage">
             <div v-if="currentmode === 'NonEdit'">
@@ -28,12 +28,15 @@
                 {{ data.description }}
               </h1>
             </div>
-            <div v-else>Description <input v-bind="newdescription" class="postdescription" /></div>
+            <div v-else>Description <input  v-model="newdescription"/>
+            ImageLink <input v-model="newimagelink">
+            </div>
             <div class="btnbox">
               <button @click="deletepost(data)" class="btn">Delete</button>
               <button @click="editpost" class="btn">Edit</button>
               <div v-if="currentmode === 'EditMode'">
-                <button @click="updateEdit" class="btn">Confirm Edit</button>
+                <button @click="updateEdit(data)" class="btn">Confirm Edit</button>
+                <button class="btn" @click="nonEditmode">Cancel Edit</button>
               </div>
             </div>
           </div>
@@ -50,8 +53,7 @@
 }
 input {
   width: 98.8%;
-  height: 20px;
-  font-size: 5px;
+  height: 15px;
 }
 .btn {
   background-color: transparent;
@@ -84,7 +86,7 @@ h1 {
 .postbox {
   background-color: white;
   width: 650px;
-  height: 750px;
+  height: 780px;
   border: 3px black solid;
   margin-bottom: 50px;
 }
@@ -121,6 +123,7 @@ ref(useCounterStore())
 let currentmode = ref('NonEdit')
 let newtitle = ref('')
 let newdescription = ref('')
+let newimagelink = ref('')
 
 let mypost = ref('')
 async function getdata() {
@@ -132,7 +135,8 @@ async function getdata() {
         title: data.title,
         description: data.description,
         imagelink: data.imagelink,
-        createdby: data.createdby
+        createdby: data.createdby,
+        postid: data.postid
       })
     }
   })
@@ -144,12 +148,26 @@ async function deletepost(row) {
   getdata()
 }
 
-async function editpost() {
+function editpost() {
   currentmode.value = 'EditMode'
 }
 
-async function updateEdit() {
+function nonEditmode(){
   currentmode.value = 'NonEdit'
+}
+
+
+
+async function updateEdit(blogpost) {
+  console.log(blogpost)
+  const { data, error } = await supabase
+  .from('userposts')
+  .update({ title: `${newtitle.value}`, description: `${newdescription.value}`, imagelink: `${newimagelink.value}` })
+  .eq('postid', `${blogpost.postid}`)
+
+
+  nonEditmode()
+  getdata()
 }
 
 onMounted(() => {
